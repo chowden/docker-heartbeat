@@ -1,0 +1,9 @@
+heartbeat.monitors
+
+- type: http
+
+    # A bunch of URLs for heatbeat to monitor
+    urls: ["https://www.google.com"]
+    
+    # Specify the schedule
+    schedule: '@every 60s'
