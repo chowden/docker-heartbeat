@@ -1,5 +1,4 @@
 heartbeat.monitors
-
 - type: http
 
     # A bunch of URLs for heatbeat to monitor
@@ -7,3 +6,27 @@ heartbeat.monitors
     
     # Specify the schedule
     schedule: '@every 60s'
+    name: "URL Shipper"
+    
+    
+heartbeat.scheduler:
+  limit: 10
+  
+queue.mem:
+  events: 4096
+  flush.min_events: 512
+  flush.timeout: 5s
+
+setup.kibana:
+  host: "localhost:5601"
+  
+setup.dashboards.enable: true
+
+logging.selectors: ["*"]
+
+output.elasticsearch:
+  hosts: ["http://localhost:9200"]
+  index: "heartbeat-%{[beat.version]}-%{+yyyy.MM.dd}"
+  
+
+
